@@ -35,8 +35,8 @@ y1[0] = th0 + x1[0] * th1
 y1[1] = th0 + x1[1] * th1
 
 
-plt.plot(x1, y1, 'g', label = u'С коэффицентами, найденными вручную')
-plt.scatter(X, Y, label = u'Исходные данные', color='k')
+plt.plot(x1, y1, 'g', label = u'найдены вручную', color='darkmagenta')
+plt.scatter(X, Y, label = u'Исходные данные', linewidth = 0.01, color='coral')
 
 np_x = np.array(X)
 np_y = np.array(Y)
@@ -45,12 +45,11 @@ new_th1, new_th0 = (np.polyfit(np_x, np_y, 1)).tolist()
 new_y1 = [0, 0]
 new_y1[0] = new_th0 + x1[0] * new_th1
 new_y1[1] = new_th0 + x1[1] * new_th1
-plt.plot(x1, new_y1, label = u'С коэффциентами, найденными с помощью метода polyfit')
+plt.plot(x1, new_y1, label = u'найден методом polyfit')
 
 print(new_th0, new_th1) #-3.8957808783118555 1.1930336441895935
 
 
-plt.title('Линейная регрессия с одной переменной. Градиентный спуск')
 plt.legend()
 plt.ylabel('y')
 plt.xlabel('x')
