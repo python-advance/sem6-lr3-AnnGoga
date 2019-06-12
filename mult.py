@@ -33,22 +33,22 @@ th3_3, th2_3, th1_3, th0_3 = np.polyfit(np_x, np_y, 3)
 th4_4, th3_4, th2_4, th1_4, th0_4 = np.polyfit(np_x, np_y, 4)
 th5_5, th4_5, th3_5, th2_5, th1_5, th0_5 = np.polyfit(np_x, np_y, 5)
 
-plt.scatter(X, Y, label = u'Исходные данные', color='k')
+plt.scatter(X, Y, label = u'Исходные данные', linewidth = 0.1, color='c')
 
 f1 = sp.poly1d(np.polyfit(np_x, np_y, 1))
-plt.plot(x1, f1(x1), linewidth = 3, label = u'polyfit полином 1-ой степени')
+plt.plot(x1, f1(x1), linewidth = 2, color='darkmagenta', label = u'1-ой степени')
 
 f2 = sp.poly1d(np.polyfit(np_x, np_y, 2))
-plt.plot(x2, f2(x2), linewidth = 3, label = u'polyfit полином 2-ой степени')
+plt.plot(x2, f2(x2), linewidth = 2, color='b', label = u'2-ой степени')
 
 f3 = sp.poly1d(np.polyfit(np_x, np_y, 3))
-plt.plot(x2, f3(x2), linewidth = 3, label = u'polyfit полином 3-ей степени')
+plt.plot(x2, f3(x2), linewidth = 2, color='k', label = u'3-ей степени')
 
 f4 = sp.poly1d(np.polyfit(np_x, np_y, 4))
-plt.plot(x2, f4(x2), linewidth = 3, label = u'polyfit полином 4-ой степени')
+plt.plot(x2, f4(x2), linewidth = 2, color='orangered', label = u'4-ой степени')
 
 f5 = sp.poly1d(np.polyfit(np_x, np_y, 5))
-plt.plot(x2, f5(x2), linewidth = 3, label = u'polyfit полином 5-ой степени')
+plt.plot(x2, f5(x2), linewidth = 2, color='gold', label = u'5-ой степени')
 
 
 fun1 = lambda x: th1_1*x + th0_1
@@ -63,11 +63,11 @@ res3 = sq_error(X, Y, fun3)
 res4 = sq_error(X, Y, fun4)
 res5 = sq_error(X, Y, fun5)
 
-print(f"Ср.кв.ошибка (1) составляет = {res1:.3f}")
-print(f"Ср.кв.ошибка (2) составляет = {res2:.3f} на {100 - 100*res2/res1:.2f}% лучше (1)")
-print(f"Ср.кв.ошибка (3) составляет = {res3:.3f} на {100 - 100*res3/res1:.2f}% лучше (1)")
-print(f"Ср.кв.ошибка (4) составляет = {res4:.3f} на {100 - 100*res4/res1:.2f}% лучше (1)")
-print(f"Ср.кв.ошибка (5) составляет = {res5:.3f} на {100 - 100*res5/res1:.2f}% лучше (1)")
+print(f"Средняя квадратичная ошибка полинома 1-ой степени  = {res1:.3f}")
+print(f"2-ой степени = {res2:.3f} на {100 - 100*res2/res1:.2f}% лучше полинома 1-ой степени")
+print(f"3-ой степени = {res3:.3f} на {100 - 100*res3/res1:.2f}% лучше полинома 1-ой степени")
+print(f"4-ой степени = {res4:.3f} на {100 - 100*res4/res1:.2f}% лучше полинома 1-ой степени")
+print(f"5-ой степени = {res5:.3f} на {100 - 100*res5/res1:.2f}% лучше полинома 1-ой степени")
 
 
 #Task 10 - предсказание
@@ -89,11 +89,10 @@ new_th1_1, new_th0_1 = sp.polyfit(x_predict, y_predict, 1)
 print(f"Полином 1-ой степени: {new_th0_1:.3f}x + {new_th1_1:.3f}")
 
 
-new_th5_2, new_th4_2, new_th3_2, new_th2_2, new_th1_2, new_th0_2 = np.polyfit(x_predict, y_predict, 5)
+new_th5_2, new_th4_2, new_th3_2, new_th2_2, new_th1_2, new_th0_2 = sp.polyfit(x_predict, y_predict, 5)
 print(f"Полином 5-ой степени: {new_th5_2}x^5 + {new_th4_2}x^4 + {new_th3_2:.6f}x^3 + {new_th2_2:.6f}x^2 + {new_th1_2:.6f}x + {new_th0_2:.6f}")
 
 
-plt.title('Линейная регрессия')
 plt.legend()
 plt.ylabel('y')
 plt.xlabel('x')
